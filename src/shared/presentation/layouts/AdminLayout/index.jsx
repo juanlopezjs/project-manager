@@ -1,16 +1,15 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import './AdminLayout.scss';
 import Header from '../../components/layout/Header';
 import Sidebar from '../../components/layout/Sidebar';
 
 const AdminLayout = ({ children }) => {
 	return (
-		<main className='layout-admin-container'>
+		<main>
 			<Header />
 			<Sidebar />
-			<section className='container'>
-				{children}	
+			<section className="p-4 sm:ml-64 bg-slate-50 h-screen mt-16">
+				<div className="p-4 ">{children}</div>
 			</section>
 		</main>
 	);
