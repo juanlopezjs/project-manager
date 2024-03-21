@@ -1,4 +1,4 @@
-export const dashboardRoute = '/example';
+export const dashboardRoute = '/dashboard';
 
 
 export default { dashboardRoute };
