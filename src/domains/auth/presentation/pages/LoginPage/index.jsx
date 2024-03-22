@@ -77,7 +77,7 @@ const LoginPage = () => {
 					<div className="flex items-center justify-between">
 						<div className="flex items-center gap-2">
 							<Checkbox id="remember" />
-							<Label className="text-gray-500 " htmlFor="remember">
+							<Label className="text-gray-500" htmlFor="remember">
 								Permanecer Conectado
 							</Label>
 						</div>
