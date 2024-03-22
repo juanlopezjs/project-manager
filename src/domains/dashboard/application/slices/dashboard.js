@@ -1,9 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getFetchCurrentTime } from '../../infrastructure/api';
+import { getFetchCPUreport, getFetchCards, getFetchCommitReport, getFetchCurrentTime } from '../../infrastructure/api';
 
 export const initialState = {
 	currentTime: {},
 	loader: false,
+	developmentCycle: {},
+	cpuReport: {},
+	commitReport: [],
 };
 
 export const getCurrentTime = createAsyncThunk(
@@ -16,6 +19,29 @@ export const getCurrentTime = createAsyncThunk(
 		}
 	},
 );
+
+export const getDashboardCards = createAsyncThunk('dashboard/getDashboardCards', async (_, { rejectWithValue }) => {
+	try {
+		return await getFetchCards();
+	} catch (error) {
+		return rejectWithValue(error);
+	}
+});
+
+export const getCPUreport = createAsyncThunk('dashboard/getCPUreport', async (_, { rejectWithValue }) => {
+	try {
+		return await getFetchCPUreport();
+	} catch (error) {
+		return rejectWithValue(error);
+	}
+});
+export const getCommitReport = createAsyncThunk('dashboard/getCommitReport', async (_, { rejectWithValue }) => {
+	try {
+		return await getFetchCommitReport();
+	} catch (error) {
+		return rejectWithValue(error);
+	}
+});
 
 const Dashboard = createSlice({
 	name: 'dashboard',
@@ -32,6 +58,15 @@ const Dashboard = createSlice({
 		addCase(getCurrentTime.fulfilled, (state, { payload }) => {
 			state.currentTime = payload;
 			state.loader = false;
+		});
+		addCase(getDashboardCards.fulfilled, (state, { payload }) => {
+			state.developmentCycle = payload;
+		});
+		addCase(getCPUreport.fulfilled, (state, { payload }) => {
+			state.cpuReport = payload;
+		});
+		addCase(getCommitReport.fulfilled, (state, { payload }) => {
+			state.commitReport = payload;
 		});
 	},
 });

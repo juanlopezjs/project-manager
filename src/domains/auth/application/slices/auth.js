@@ -39,7 +39,7 @@ const Auth = createSlice({
 		addCase(getLogin.fulfilled, (state, { payload }) => {
 			state.loader = false;
 			state.currentUser = payload;
-			state.error = "";
+			state.error = '';
 		});
 		addCase(getLogin.rejected, (state, { payload }) => {
 			state.loader = false;
