@@ -1,7 +1,7 @@
 import AdminLayout from '../../../../shared/presentation/layouts/AdminLayout';
 import DashboardPage from '../../presentation/pages/Dashboard';
 import { dashboardRoute } from './routes';
-import { UnauthenticatedRoute } from '../../../../shared/presentation/redirect-route';
+import {  PrivateRoute } from '../../../../shared/presentation/redirect-route';
 
 const exampleRouter = {
 	layout: AdminLayout,
@@ -9,7 +9,7 @@ const exampleRouter = {
 		{
 			path: dashboardRoute,
 			page: DashboardPage,
-			routeComponent: UnauthenticatedRoute,
+			routeComponent: PrivateRoute,
 		},
 	],
 };

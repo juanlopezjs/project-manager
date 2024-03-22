@@ -1,13 +1,12 @@
 import React from 'react';
 import Time from '../../components/Time';
-import './DashboardPage.scss';
 import ProjectReport from '../../components/ProjectReport';
 
 const DashboardPage = () => {
 	return (
 		<section className="dashboard-page-container w- h-auto max-w-screen-2xl">
-			<div className="title-container">Holas</div>
-			<div className="grid-container grid grid-cols-1 md:grid-cols-2 gap-4">
+			<div className="title-container">Holas</div>			
+			<div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
 				<Time/>
 				<ProjectReport />
 				<div className="detail-server-container"></div>
