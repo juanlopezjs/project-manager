@@ -38,4 +38,4 @@ const Dashboard = createSlice({
 
 export const { addTodo } = Dashboard.actions;
 
-export default Dashboard.reducer;
+export default Dashboard;

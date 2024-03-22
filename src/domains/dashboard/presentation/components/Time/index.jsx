@@ -35,7 +35,7 @@ const Time = () => {
 	}, [dispatch, location]);
 
 	return (
-		<div className="time-container">
+		<div className="time-container col-span-12 rounded-sm px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-6">
 			{Object.keys(currentTime).length > 0 ? (
 				<>
 					<img className="image rounded-xl object-cover object-top lg:object-center" src={`${window.location.origin}/${currentTime.weather[0].icon}.svg`} />

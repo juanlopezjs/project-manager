@@ -1,20 +1,21 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import Proptypes from 'prop-types';
-import { dashboardRoute } from '../../domains/dashboard/infrastructure/routing/routes';
+import { loginRoute } from '../../domains/auth/infrastructure/routing/routes';
 import { homeRoute } from '../infrastructure/routing/routes';
+import { getUserSession } from '../../domains/auth/application/helpers/auth';
 
 export const PrivateRoute = ({ component: Component, layout: Layout, ...rest }) => {
 	return (
 		<Route
 			{...rest}
 			render={(props) =>
-				localStorage.getItem('user') ? (
+				getUserSession() ? (
 					<Layout path={rest.path}>
 						<Component {...props} />
 					</Layout>
 				) : (
-					<Redirect to={{ pathname: dashboardRoute, state: { from: props.location } }} />
+					<Redirect to={{ pathname: loginRoute, state: { from: props.location } }} />
 				)
 			}
 		/>
@@ -33,7 +34,7 @@ export const UnauthenticatedRoute = ({ component: C, layout: Layout, ...rest }) 
 		<Route
 			{...rest}
 			render={(props) =>
-				typeof window !== 'undefined' && !localStorage.getItem('user') ? (
+				typeof window !== 'undefined' && !getUserSession() ? (
 					<Layout path={rest.path}>
 						<C {...props} />
 					</Layout>

@@ -1,7 +1,15 @@
 import React from 'react';
 import { Avatar, Dropdown } from 'flowbite-react';
+import { deleteUserSession } from '../../../../../domains/auth/application/helpers/auth';
+import { history } from '../../../../application/helpers/history';
+import { loginRoute } from '../../../../../domains/auth/infrastructure/routing/routes';
 
 const Header = () => {
+	const handleLogout = () => {
+		deleteUserSession();
+		history.push(loginRoute);
+	};
+	
 	return (
 		<nav className="fixed shadow-lg top-0 z-50 w-full border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
 			<div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -30,8 +38,11 @@ const Header = () => {
 							</svg>
 						</button>
 						<a href="https://flowbite.com" className="flex ms-2 md:me-24">
-							<img src="https://flowbite.com/docs/images/logo.svg" className="h-8 me-3" alt="FlowBite Logo" />
-							<span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Flowbite</span>
+							<img
+								src="https://olsoftware.com/wp-content/uploads/2021/04/cropped-Logo-Oficial-OL-Software-230x64.png"
+								className="h-8 me-3"
+								alt="FlowBite Logo"
+							/>
 						</a>
 					</div>
 					<div className="flex items-center">
@@ -51,7 +62,7 @@ const Header = () => {
 								<Dropdown.Item>Settings</Dropdown.Item>
 								<Dropdown.Item>Earnings</Dropdown.Item>
 								<Dropdown.Divider />
-								<Dropdown.Item>Sign out</Dropdown.Item>
+								<Dropdown.Item onClick={handleLogout}>Cerrar sesion</Dropdown.Item>
 							</Dropdown>
 						</div>
 					</div>

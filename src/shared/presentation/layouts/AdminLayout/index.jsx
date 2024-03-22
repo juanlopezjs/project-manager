@@ -9,7 +9,7 @@ const AdminLayout = ({ children }) => {
 			<Header />
 			<Sidebar />
 			<section className="p-4 sm:ml-64 bg-slate-50 h-screen mt-16">
-				<div className="p-4 ">{children}</div>
+				<div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">{children}</div>
 			</section>
 		</main>
 	);

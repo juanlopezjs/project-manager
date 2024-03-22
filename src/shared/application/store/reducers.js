@@ -1,7 +1,15 @@
 import { combineReducers } from 'redux';
-import dashboard from '../../../domains/dashboard/application/slices/dashboard';
 
+import { importFiles } from '../helpers/common-functions';
+
+const importRouter = import.meta.glob('../../../domains/**/application/slices/**.js');
+const slicesDomain = await importFiles(importRouter);
+
+const reducers = {};
+slicesDomain.forEach((slice) => {
+	reducers[slice.default.name] = slice.default.reducer;
+});
 
 export default combineReducers({
-	dashboard,
+	...reducers,
 });
