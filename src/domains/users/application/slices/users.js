@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getFetchListUser } from '../../infrastructure/api';
+import { getFetchListRols } from '../../../rols/infrastructure/api';
 
 export const initialState = {
 	users: [],
@@ -10,7 +11,16 @@ export const initialState = {
 export const getListUser = createAsyncThunk('users/getListUser', async (_, { rejectWithValue }) => {
 	try {
 		const response = await getFetchListUser();
-		return response;
+		const responseRols = await getFetchListRols();
+		
+		const data = response.map((user) => {
+			const rol = responseRols.find((role) => role.id === user.rol);
+			return {
+				...user,
+				rol: rol?.name
+			};
+		});
+		return data;
 	} catch (error) {
 		return rejectWithValue(error);
 	}

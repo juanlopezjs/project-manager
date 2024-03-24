@@ -1,33 +1,28 @@
-import { Table, Button, Avatar } from 'flowbite-react';
+import { Table, Button } from 'flowbite-react';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSelectorUsers } from '../../../application/selectors/users';
-import { getListUser } from '../../../application/slices/users';
+import { getSelectorRols } from '../../../application/selectors/rols';
+import { getListRols } from '../../../application/slices/rols';
 import { getSelectorIsAdmin } from '../../../../auth/application/selectors/auth';
 
-const ListUserPage = () => {
-	const users = useSelector(getSelectorUsers);
+const ListRolsPage = () => {
+	const rols = useSelector(getSelectorRols);
 	const isAdmin = useSelector(getSelectorIsAdmin);
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(getListUser());
+		dispatch(getListRols());
 	}, [dispatch]);
 
 	return (
 		<div className="bg-white px-8 pt-7 pb-5 shadow-lg">
-			<h1 className="font-semibold text-lg">Usuarios</h1>
+			<h1 className="font-semibold text-lg">Roles</h1>
 			<div className="flex justify-end mb-10">
-				<Button color="primary">Agregar Usuario</Button>
+				<Button color="primary">Agregar Rol</Button>
 			</div>
 			<div className="overflow-x-auto">
 				<Table>
 					<Table.Head>
-						<Table.HeadCell></Table.HeadCell>
-						<Table.HeadCell>Nombre</Table.HeadCell>
-						<Table.HeadCell>Apellido</Table.HeadCell>
 						<Table.HeadCell>Rol</Table.HeadCell>
-						<Table.HeadCell>Tecnologías</Table.HeadCell>
-						<Table.HeadCell>Area</Table.HeadCell>
 						{isAdmin && (
 							<Table.HeadCell>
 								<span className="sr-only">Edit</span>
@@ -35,16 +30,9 @@ const ListUserPage = () => {
 						)}
 					</Table.Head>
 					<Table.Body className="divide-y">
-						{users.map((item, key) => (
+						{rols.map((item, key) => (
 							<Table.Row key={key} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-								<Table.Cell>
-									<Avatar image={item.url_foto} rounded />
-								</Table.Cell>
-								<Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{item.name}</Table.Cell>
-								<Table.Cell>{item.last_name}</Table.Cell>
-								<Table.Cell>{item.rol}</Table.Cell>
-								<Table.Cell>{item.list}</Table.Cell>
-								<Table.Cell>{item.area}</Table.Cell>
+								<Table.Cell>{item.name}</Table.Cell>
 								{isAdmin && (
 									<Table.Cell>
 										<a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
@@ -61,4 +49,4 @@ const ListUserPage = () => {
 	);
 };
 
-export default ListUserPage;
+export default ListRolsPage;

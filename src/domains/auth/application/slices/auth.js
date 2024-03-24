@@ -3,6 +3,7 @@ import { getUserSession, setUserSession } from '../helpers/auth';
 import { getFetchLoginUser, getFetchUserForId } from '../../infrastructure/api';
 import { dashboardRoute } from '../../../dashboard/infrastructure/routing/routes';
 import { history } from '../../../../shared/application/helpers/history';
+import { getFetchRolForId } from '../../../rols/infrastructure/api';
 
 const user = JSON.parse(getUserSession());
 
@@ -15,10 +16,13 @@ export const initialState = {
 export const getLogin = createAsyncThunk('auth/getLogin', async ({ username, password }, { rejectWithValue }) => {
 	try {
 		const response = await getFetchLoginUser(username, password);
-		const newUser = await getFetchUserForId(response[0].user_id);
-		setUserSession(JSON.stringify(newUser[0]));
+		const responseUser = await getFetchUserForId(response[0].user_id);
+		const newUser = responseUser[0];
+		const responseRoleUser = await getFetchRolForId(newUser.rol);
+		const data = { ...newUser, rol: responseRoleUser[0].name };
+		setUserSession(JSON.stringify(data));
 		history.push(dashboardRoute);
-		return newUser[0];
+		return data;
 	} catch (error) {
 		return rejectWithValue(error);
 	}
