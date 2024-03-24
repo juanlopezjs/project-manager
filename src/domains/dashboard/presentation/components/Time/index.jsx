@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import './Time.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { Spinner } from 'flowbite-react';
 import { getCurrentTime } from '../../../application/slices/dashboard';
 import { getSelectorCurrentTime, getSelectorLoader } from '../../../application/selectors/dashboard';
+import Loading from '../../../../../shared/presentation/components/Loading';
 
 const Time = () => {
 	const dispatch = useDispatch();
@@ -39,9 +39,7 @@ const Time = () => {
 	return (
 		<div className="time-container col-span-12 rounded-xl pt-7.5 dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-6 shadow-lg">
 			{loading ? (
-				<div className="flex justify-center items-center h-full">
-					<Spinner size="xl" color="purple" aria-label="Purple spinner example" />
-				</div>
+				<Loading />
 			) : (
 				<>
 					<img

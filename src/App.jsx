@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
-import { Flowbite, Spinner } from 'flowbite-react';
+import { Flowbite } from 'flowbite-react';
 import Router from './shared/presentation/Router';
+import Loading from './shared/presentation/components/Loading'
 
 const customTheme = {
 	button: {
@@ -12,7 +13,7 @@ const customTheme = {
 const App = () => {
 	return (
 		<Flowbite theme={{ theme: customTheme }}>
-			<Suspense fallback={<Spinner size="xl" color="purple" aria-label="Purple spinner example"/>}>
+			<Suspense fallback={<Loading heightScreen={true} />}>
 				<Router />
 			</Suspense>
 		</Flowbite>

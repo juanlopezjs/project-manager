@@ -7,8 +7,13 @@ export const getSelectorCurrentUser = createSelector(authState, (auth) => {
 	return currentUser;
 });
 
-
 export const getSelectorErrorAuth = createSelector(authState, (auth) => {
 	const { error } = auth;
 	return error;
 });
+
+export const getSelectorIsAdmin = createSelector(authState, (auth) => {
+	const { currentUser } = auth;
+	return currentUser?.rol || false;
+});
+

@@ -72,10 +72,6 @@ const Header = () => {
 								<Dropdown.Header>
 									<span className="block text-sm">{`${userCurrent?.name} ${userCurrent?.last_name}`}</span>
 								</Dropdown.Header>
-								<Dropdown.Item>Dashboard</Dropdown.Item>
-								<Dropdown.Item>Settings</Dropdown.Item>
-								<Dropdown.Item>Earnings</Dropdown.Item>
-								<Dropdown.Divider />
 								<Dropdown.Item onClick={handleLogout}>Cerrar sesion</Dropdown.Item>
 							</Dropdown>
 						</div>

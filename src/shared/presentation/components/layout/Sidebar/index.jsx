@@ -6,13 +6,15 @@ import classNames from "classnames";
 import { dashboardRoute } from '../../../../../domains/dashboard/infrastructure/routing/routes';
 import { usersRoute } from '../../../../../domains/users/infrastructure/routing/routes';
 import { getSelectorCollapseSidebar } from '../../../../application/selectors/app';
+import { rolsRoute } from '../../../../../domains/rols/infrastructure/routing/routes';
+import { projectRoute } from '../../../../../domains/projects/infrastructure/routing/routes';
 
 const Sidebar = () => {
 	const collapseSidebar = useSelector(getSelectorCollapseSidebar);
 	const className = classNames({
 		'translate-x-0': collapseSidebar
 	})
-	
+
 	return (
 		<aside
 			id="logo-sidebar"
@@ -34,7 +36,7 @@ const Sidebar = () => {
 					</li>
 					<li>
 						<NavLink
-							to={'/pedro'}
+							to={projectRoute}
 							activeClassName="bg-indigo-700 text-white"
 							exact
 							className="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-indigo-700 hover:text-white dark:hover:bg-gray-700 group"
@@ -56,7 +58,7 @@ const Sidebar = () => {
 					</li>
 					<li>
 						<NavLink
-							to={'/pedro'}
+							to={rolsRoute}
 							activeClassName="bg-indigo-700 text-white"
 							exact
 							className="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-indigo-700 hover:text-white dark:hover:bg-gray-700 group"
