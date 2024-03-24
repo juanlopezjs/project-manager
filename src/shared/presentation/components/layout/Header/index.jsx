@@ -1,17 +1,27 @@
 import React from 'react';
 import { Avatar, Dropdown } from 'flowbite-react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RiNotification4Line } from 'react-icons/ri';
 import { deleteUserSession } from '../../../../../domains/auth/application/helpers/auth';
 import { history } from '../../../../application/helpers/history';
 import { loginRoute } from '../../../../../domains/auth/infrastructure/routing/routes';
+import { getSelectorCurrentUser } from '../../../../../domains/auth/application/selectors/auth';
+import { setToggleCollapseSidebar } from "../../../../application/slices/app";
 
 const Header = () => {
+	const userCurrent = useSelector(getSelectorCurrentUser);
+	const dispatch = useDispatch();
 	const handleLogout = () => {
 		deleteUserSession();
 		history.push(loginRoute);
 	};
-	
+
+	const handleToggleSidebar = () => {
+		dispatch(setToggleCollapseSidebar())
+	}
+
 	return (
-		<nav className="fixed shadow-lg top-0 z-50 w-full border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+		<nav className="fixed shadow-lg top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
 			<div className="px-3 py-3 lg:px-5 lg:pl-3">
 				<div className="flex items-center justify-between">
 					<div className="flex items-center justify-start rtl:justify-end">
@@ -21,6 +31,7 @@ const Header = () => {
 							aria-controls="logo-sidebar"
 							type="button"
 							className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+							onClick={handleToggleSidebar}
 						>
 							<span className="sr-only">Open sidebar</span>
 							<svg
@@ -47,6 +58,10 @@ const Header = () => {
 					</div>
 					<div className="flex items-center">
 						<div className="flex items-center ms-3">
+							<Dropdown arrowIcon={true} inline label={<RiNotification4Line size={25} />}></Dropdown>
+						</div>
+
+						<div className="flex items-center ms-3">
 							<Dropdown
 								arrowIcon={true}
 								inline
@@ -55,8 +70,7 @@ const Header = () => {
 								}
 							>
 								<Dropdown.Header>
-									<span className="block text-sm">Bonnie Green</span>
-									<span className="block truncate text-sm font-medium">name@flowbite.com</span>
+									<span className="block text-sm">{`${userCurrent?.name} ${userCurrent?.last_name}`}</span>
 								</Dropdown.Header>
 								<Dropdown.Item>Dashboard</Dropdown.Item>
 								<Dropdown.Item>Settings</Dropdown.Item>

@@ -12,7 +12,7 @@ const ProjectReport = () => {
 	}, [dispatch])
 	
 	return (
-		<div className="col-span-12 rounded-sm p-7.5  dark:border-strokedark dark:bg-boxdark xl:col-span-6 ">
+		<div className="col-span-12 rounded-sm p-7.5 dark:border-strokedark dark:bg-boxdark xl:col-span-6 ">
 			<div className="grid grid-cols-1 grid-rows-2 gap-4 lg:grid-cols-2">
 				<div className="md:max-h-40 bg-blue-400 rounded-xl text-white p-4 flex flex-col gap-2 shadow-lg">
 					<div className="text-white ">Proyectos Registrados</div>

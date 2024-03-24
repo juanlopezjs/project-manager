@@ -1,14 +1,13 @@
-import AdminLayout from '../../../../shared/presentation/layouts/AdminLayout';
-import DashboardPage from '../../presentation/pages/Dashboard';
+import { lazy } from 'react';
 import { dashboardRoute } from './routes';
 import {  PrivateRoute } from '../../../../shared/presentation/redirect-route';
 
 const exampleRouter = {
-	layout: AdminLayout,
+	layout: lazy(() => import('../../../../shared/presentation/layouts/AdminLayout')),
 	router: [
 		{
 			path: dashboardRoute,
-			page: DashboardPage,
+			page: lazy(() => import('../../presentation/pages/Dashboard')),
 			routeComponent: PrivateRoute,
 		},
 	],

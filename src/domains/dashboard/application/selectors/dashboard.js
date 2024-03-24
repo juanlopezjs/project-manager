@@ -21,3 +21,13 @@ export const getSelectorCommitReport = createSelector(dashboardState, (dashboard
 	const { commitReport } = dashboard;
 	return commitReport;
 });
+
+export const getSelectorReleaseResume = createSelector(dashboardState, (dashboard) => {
+	const { releaseResume } = dashboard;
+	return releaseResume;
+});
+
+export const getSelectorLoader = createSelector(dashboardState, (dashboard) => {
+	const { loader } = dashboard;
+	return loader;
+});

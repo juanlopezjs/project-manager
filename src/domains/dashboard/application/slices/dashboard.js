@@ -1,12 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getFetchCPUreport, getFetchCards, getFetchCommitReport, getFetchCurrentTime } from '../../infrastructure/api';
+import {
+	getFetchCPUreport,
+	getFetchCards,
+	getFetchCommitReport,
+	getFetchCurrentTime,
+	getFetchReleaseResume,
+} from '../../infrastructure/api';
 
 export const initialState = {
 	currentTime: {},
-	loader: false,
+	loader: true,
 	developmentCycle: {},
 	cpuReport: {},
 	commitReport: [],
+	releaseResume: {},
 };
 
 export const getCurrentTime = createAsyncThunk(
@@ -35,9 +42,18 @@ export const getCPUreport = createAsyncThunk('dashboard/getCPUreport', async (_,
 		return rejectWithValue(error);
 	}
 });
+
 export const getCommitReport = createAsyncThunk('dashboard/getCommitReport', async (_, { rejectWithValue }) => {
 	try {
 		return await getFetchCommitReport();
+	} catch (error) {
+		return rejectWithValue(error);
+	}
+});
+
+export const getReleaseResume = createAsyncThunk('dashboard/getReleaseResume', async (_, { rejectWithValue }) => {
+	try {
+		return await getFetchReleaseResume();
 	} catch (error) {
 		return rejectWithValue(error);
 	}
@@ -67,6 +83,9 @@ const Dashboard = createSlice({
 		});
 		addCase(getCommitReport.fulfilled, (state, { payload }) => {
 			state.commitReport = payload;
+		});
+		addCase(getReleaseResume.fulfilled, (state, { payload }) => {
+			state.releaseResume = payload;
 		});
 	},
 });

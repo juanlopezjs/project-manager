@@ -1,5 +1,5 @@
-import React from 'react';
-import { Flowbite } from 'flowbite-react';
+import React, { Suspense } from 'react';
+import { Flowbite, Spinner } from 'flowbite-react';
 import Router from './shared/presentation/Router';
 
 const customTheme = {
@@ -12,7 +12,9 @@ const customTheme = {
 const App = () => {
 	return (
 		<Flowbite theme={{ theme: customTheme }}>
-			<Router />
+			<Suspense fallback={<Spinner size="xl" color="purple" aria-label="Purple spinner example"/>}>
+				<Router />
+			</Suspense>
 		</Flowbite>
 	);
 };
