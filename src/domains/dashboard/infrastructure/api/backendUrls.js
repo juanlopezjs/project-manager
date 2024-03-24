@@ -6,3 +6,4 @@ export const fetchProductById = (lat = '', lon) =>
 export const fetchCards = () => `${URL_PROD}dashboard_cards`;
 export const fetchCPUreport = () => `${URL_PROD}cpu_report`;
 export const fetchCommitReport = () => `${URL_PROD}report_commits`;
+export const fetchReleaseResume = () => `${URL_PROD}release_resume`;

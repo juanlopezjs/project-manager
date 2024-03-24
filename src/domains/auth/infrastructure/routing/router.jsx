@@ -1,4 +1,4 @@
-import LoginPage from '../../presentation/pages/LoginPage';
+import { lazy } from 'react';
 import { loginRoute } from './routes';
 import { UnauthenticatedRoute } from '../../../../shared/presentation/redirect-route';
 
@@ -6,7 +6,7 @@ const authRouter = {
 	router: [
 		{
 			path: loginRoute,
-			page: LoginPage,
+			page: lazy(() => import('../../presentation/pages/LoginPage')),
 			routeComponent: UnauthenticatedRoute,
 		},
 	],

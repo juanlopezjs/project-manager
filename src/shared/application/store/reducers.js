@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 import { importFiles } from '../helpers/common-functions';
+import app from '../slices/app';
 
 const importRouter = import.meta.glob('../../../domains/**/application/slices/**.js');
 const slicesDomain = await importFiles(importRouter);
@@ -12,4 +13,5 @@ slicesDomain.forEach((slice) => {
 
 export default combineReducers({
 	...reducers,
+	app,
 });

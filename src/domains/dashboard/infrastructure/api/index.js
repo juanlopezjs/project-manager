@@ -1,4 +1,4 @@
-import { fetchCPUreport, fetchCards, fetchCommitReport, fetchProductById } from "./backendUrls";
+import { fetchCPUreport, fetchCards, fetchCommitReport, fetchProductById, fetchReleaseResume } from "./backendUrls";
 
 export const getFetchCurrentTime = (lat, lon) => {
 	const requestOptions = {
@@ -27,6 +27,13 @@ export const getFetchCommitReport = () => {
 		method: 'GET',
 	};
 	return fetch(fetchCommitReport(), requestOptions).then((response) => response.json());
+};
+
+export const getFetchReleaseResume = () => {
+	const requestOptions = {
+		method: 'GET',
+	};
+	return fetch(fetchReleaseResume(), requestOptions).then((response) => response.json());
 };
 
 

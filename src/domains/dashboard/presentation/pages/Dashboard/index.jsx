@@ -5,6 +5,7 @@ import ProjectReport from '../../components/ProjectReport';
 import DetailServer from '../../components/DetailServer';
 import { getSelectorCurrentUser } from '../../../../auth/application/selectors/auth';
 import CommitServer from '../../components/CommitReport';
+import ReleaseResume from '../../components/ReleaseResume';
 
 const DashboardPage = () => {
 	const currentUser = useSelector(getSelectorCurrentUser);
@@ -16,9 +17,7 @@ const DashboardPage = () => {
 				<ProjectReport />
 				<DetailServer />
 				<CommitServer />
-				<div className="grid grid-cols-1 gap-4 col-span-2">
-					<div className="deploys-container h-auto max-w-full bg-red"> asdasd</div>
-				</div>
+				<ReleaseResume />
 			</div>
 		</section>
 	);
