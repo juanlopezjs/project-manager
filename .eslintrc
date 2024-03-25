@@ -20,7 +20,9 @@
 		"es6": true,
 		"jest": true
 	},
-	"plugins": [],
+	"plugins": [
+		"import"
+	],
 	"rules": {
 		"import/extensions": "off",
 		"import/no-unresolved": "off",

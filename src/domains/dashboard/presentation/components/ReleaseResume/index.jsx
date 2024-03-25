@@ -47,11 +47,11 @@ const ReleaseResume = () => {
 					</div>
 					<div className="grid grid-cols-[auto_50%_auto] flex-1 w-full lg:w-8/12 items-center gap-x-6">
 						{releaseResume?.top_projects?.map((item, key) => (
-							<>
+							<React.Fragment key={key}>
 								<span>{item.name}</span>
 								<Progress color={colorArray[key]} size="md" progress={item.porcentaje} />
 								<span className="grow-0">{item.porcentaje}%</span>
-							</>
+							</React.Fragment>
 						))}
 					</div>
 				</div>

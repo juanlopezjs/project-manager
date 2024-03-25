@@ -14,6 +14,6 @@ export const getSelectorErrorAuth = createSelector(authState, (auth) => {
 
 export const getSelectorIsAdmin = createSelector(authState, (auth) => {
 	const { currentUser } = auth;
-	return currentUser?.rol || false;
+	return currentUser?.rol === 'Admin' || false;
 });
 

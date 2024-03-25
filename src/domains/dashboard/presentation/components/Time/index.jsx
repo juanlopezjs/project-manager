@@ -43,12 +43,17 @@ const Time = () => {
 			) : (
 				<>
 					<img
+						alt="weather-image"
 						className="image rounded-xl aspect-auto object-cover object-top lg:object-center"
 						src={`${window.location.origin}/${currentTime.weather[0].icon}.svg`}
 					/>
 					<div className="time-information bg-indigo-600 shadow-lg rounded-lg px-4">
 						<span>
-							<img className="w-12" src={`https://openweathermap.org/img/wn/${currentTime.weather[0].icon}@2x.png`} />
+							<img
+								alt="weather-icon"
+								className="w-12"
+								src={`https://openweathermap.org/img/wn/${currentTime.weather[0].icon}@2x.png`}
+							/>
 						</span>
 						<span className={`ordinal font-medium font-semibold text-white text-lg fort md:text-2xl`}>
 							{`${Math.round(currentTime?.main?.temp)}c` || ''}
