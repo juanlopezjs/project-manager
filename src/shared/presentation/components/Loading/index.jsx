@@ -10,7 +10,7 @@ const Loading = ({ heightScreen = false }) => {
 	});
 
 	return (
-		<div className={`flex justify-center items-center ${className}`}>
+		<div className={`flex justify-center items-center ${className}`} data-testid="loading-component">
 			<Spinner size="xl" color="purple" aria-label="Purple spinner example" />
 		</div>
 	);

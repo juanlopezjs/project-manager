@@ -16,9 +16,9 @@ const ListProjectsPage = () => {
 
 	const renderCheck = (isCheck) => {
 		if (isCheck) {
-			return <RiCheckLine size={20} color='green'/>;
+			return <RiCheckLine size={20} color='green' data-testid="check-icon"/>;
 		} 
-			return <RiCircleFill size={20} color='red' />;
+			return <RiCircleFill size={20} color='red' data-testid="circle-icon"/>;
 		
 	};
 
