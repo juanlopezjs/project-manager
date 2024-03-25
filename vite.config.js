@@ -4,6 +4,7 @@ import envCompatible from 'vite-plugin-env-compatible';
 import sass from 'sass';
 import eslint from 'vite-plugin-eslint';
 import legacy from '@vitejs/plugin-legacy';
+import topLevelAwait from 'vite-plugin-top-level-await';
 
 export default defineConfig(() => {
 	return {
@@ -23,21 +24,29 @@ export default defineConfig(() => {
 		envPrefix: 'REACT_APP_',
 		optimizeDeps: {
 			esbuildOptions: {
-				// Node.js global to browser globalThis
 				define: {
 					global: 'globalThis',
 				},
 			},
 		},
-		plugins: [react(), envCompatible(), eslint(), legacy({
-			targets: ['defaults', 'not IE 11'],
-		})],
+		plugins: [
+			react(),
+			envCompatible(),
+			eslint(),
+			legacy({
+				targets: ['defaults', 'not IE 11'],
+			}),
+			topLevelAwait({
+				promiseExportName: '__tla',
+				promiseImportName: (i) => `__tla_${i}`,
+			}),
+		],
 		resolve: {
 			extensions: ['.js', '.jsx', 'json'],
 		},
 		server: {
 			port: process.env.PORT || 3000,
-			host: true
+			host: true,
 		},
 		test: {
 			environment: 'jsdom',

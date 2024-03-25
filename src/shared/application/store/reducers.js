@@ -1,10 +1,17 @@
 import { combineReducers } from 'redux';
-import example, { initialState as exampleInitial } from '../../../domains/dashboard/application/slices/example';
 
-export const initialStates = {
-	example: exampleInitial,
-};
+import { importFiles } from '../helpers/common-functions';
+import app from '../slices/app';
+
+const importRouter = import.meta.glob('../../../domains/**/application/slices/**.js');
+const slicesDomain = await importFiles(importRouter);
+
+const reducers = {};
+slicesDomain.forEach((slice) => {
+	reducers[slice.default.name] = slice.default.reducer;
+});
 
 export default combineReducers({
-	example,
+	...reducers,
+	app,
 });
