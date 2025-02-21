@@ -45,7 +45,7 @@ const Auth = createSlice({
 			state.currentUser = payload;
 			state.error = '';
 		});
-		addCase(getLogin.rejected, (state, { payload }) => {
+		addCase(getLogin.rejected, (state) => {
 			state.loader = false;
 			state.error = 'Datos incorrectos';
 		});
