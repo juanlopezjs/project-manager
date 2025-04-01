@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import stores from './shared/application/store';
+import store from './shared/application/store';
 import { history } from './shared/application/helpers/history';
 import ErrorBoundary from './shared/presentation/ErrorBoundary';
 
@@ -13,10 +13,10 @@ import './index.scss';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-	<Provider store={stores}>
+	<Provider store={store}>
 		<React.StrictMode>
 			<Router history={history}>
-				<ErrorBoundary>{history && stores && <App />}</ErrorBoundary>
+				<ErrorBoundary>{history && store && <App />}</ErrorBoundary>
 			</Router>
 		</React.StrictMode>
 	</Provider>,
